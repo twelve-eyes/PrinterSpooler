@@ -1,7 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 
+/* 
+Nomes: 
+Allan Carneiro da Cunha Silveira
+Isadora Voss Brugnera
+Jenifer Beatriz Nunes Ribeiro
+*/
 package twelveeyes.allanisadorajenifer;
 
 /**
