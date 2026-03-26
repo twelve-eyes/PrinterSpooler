@@ -10,7 +10,6 @@ package twelveeyes.allanisadorajenifer;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 class Impressao {
     private String arquivo;
