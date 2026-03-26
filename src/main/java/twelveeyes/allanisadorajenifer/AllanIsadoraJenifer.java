@@ -22,25 +22,30 @@ class Impressao {
         this.tipoArq = tipoArq;
     }
 
-//Métodos para acessar as variáveis
-public String getAqruivo(){
-    return arquivo;
-}
-public void setArquivo(String arquivo){
-    this.arquivo = arquivo;
-}
-public int getCodigo(){
-    return codigo;
-}
-public void setCodigo(int codigo){
-    this.codigo = codigo;
-}
-public String getTipoAr(){
-    return tipoArq;
-}
-public void setTipoArq(String tipoArq){
-    this.tipoArq = tipoArq;
-}
+    // Métodos para acessar as variáveis
+    public String getAqruivo() {
+        return arquivo;
+    }
+
+    public void setArquivo(String arquivo) {
+        this.arquivo = arquivo;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getTipoAr() {
+        return tipoArq;
+    }
+
+    public void setTipoArq(String tipoArq) {
+        this.tipoArq = tipoArq;
+    }
 }
 
 public class AllanIsadoraJenifer {
@@ -48,7 +53,7 @@ public class AllanIsadoraJenifer {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-     Queue<Impressao> filaImpressao = new LinkedList<>();
+        Queue<Impressao> filaImpressao = new LinkedList<>();
         // menu
         int opcao = 0;
         do {
@@ -59,8 +64,8 @@ public class AllanIsadoraJenifer {
                     incluirImpressao(opcao, filaImpressao);
                     break;
                 case 4:
-                mostrarFila(opcao, filaImpressao);
-                break;
+                    mostrarFila(opcao, filaImpressao);
+                    break;
                 case 0:
                     System.out.println("\nBYE. THANK YOU!");
                     break;
@@ -88,27 +93,27 @@ public class AllanIsadoraJenifer {
         System.out.println("==============================");
     }
 
-    public static void incluirImpressao(int posicao, Queue<Impressao>filaImpressao){
-    //Falta colocar uma condicao se já existe o documento na fila!
-    System.out.println("--------Incluindo documentos na fila de impressão---------");
-    System.out.println("Nome do documento:");
-    String arquivo = scanner.nextLine();
-    int codigo = lerInteiro("Código do documento:");
-    System.out.println("Tipo do arquivo:");
-    String tipoArq = scanner.nextLine();
-    
-    Impressao documento = new Impressao(arquivo, codigo, tipoArq);
+    public static void incluirImpressao(int posicao, Queue<Impressao> filaImpressao) {
+        // Falta colocar uma condicao se já existe o documento na fila!
+        System.out.println("--------Incluindo documentos na fila de impressão---------");
+        System.out.println("Nome do documento:");
+        String arquivo = scanner.nextLine();
+        int codigo = lerInteiro("Código do documento:");
+        System.out.println("Tipo do arquivo:");
+        String tipoArq = scanner.nextLine();
+
+        Impressao documento = new Impressao(arquivo, codigo, tipoArq);
 
         filaImpressao.add(documento);
-    System.out.println("Documento incluindo na fila de impressão!");
+        System.out.println("Documento incluindo na fila de impressão!");
     }
 
-    public static void mostrarFila(int posicao, Queue <Impressao> filaImpressao){
+    public static void mostrarFila(int posicao, Queue<Impressao> filaImpressao) {
         System.out.println("----------Mostrar documentos na fila de impressão----------");
-         if (filaImpressao.isEmpty()) {
+        if (filaImpressao.isEmpty()) {
             System.out.println("A fila está vazia.");
-         }
         }
+    }
 
     public static int lerInteiro(String mensagem) {
 
