@@ -51,9 +51,9 @@ class Impressao {
 public class AllanIsadoraJenifer {
 
     static Scanner scanner = new Scanner(System.in);
+    static Queue<Impressao> filaImpressao = new LinkedList<>();
 
     public static void main(String[] args) {
-        Queue<Impressao> filaImpressao = new LinkedList<>();
         // menu
         int opcao = 0;
         do {
@@ -61,10 +61,10 @@ public class AllanIsadoraJenifer {
             opcao = lerInteiro("Escolha a opcao: ");
             switch (opcao) {
                 case 1:
-                    incluirImpressao(opcao, filaImpressao);
+                    incluirImpressao();
                     break;
                 case 4:
-                    mostrarFila(opcao, filaImpressao);
+                    mostrarFila();
                     break;
                 case 0:
                     System.out.println("\nBYE. THANK YOU!");
@@ -93,7 +93,7 @@ public class AllanIsadoraJenifer {
         System.out.println("==============================");
     }
 
-    public static void incluirImpressao(int posicao, Queue<Impressao> filaImpressao) {
+    public static void incluirImpressao() {
         // Falta colocar uma condicao se já existe o documento na fila!
         System.out.println("--------Incluindo documentos na fila de impressão---------");
         System.out.println("Nome do documento:");
@@ -108,7 +108,7 @@ public class AllanIsadoraJenifer {
         System.out.println("Documento incluindo na fila de impressão!");
     }
 
-    public static void mostrarFila(int posicao, Queue<Impressao> filaImpressao) {
+    public static void mostrarFila() {
         System.out.println("----------Mostrar documentos na fila de impressão----------");
         if (filaImpressao.isEmpty()) {
             System.out.println("A fila está vazia.");
