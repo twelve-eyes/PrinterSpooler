@@ -23,7 +23,7 @@ class Impressao {
     }
 
     // Métodos para acessar as variáveis
-    public String getAqruivo() {
+    public String getArquivo() {
         return arquivo;
     }
 
