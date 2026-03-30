@@ -114,9 +114,18 @@ public class AllanIsadoraJenifer {
     }
 
     public static void mostrarFila() {
-        System.out.println("----------Mostrar documentos na fila de impressão----------");
+
         if (filaImpressao.isEmpty()) {
             System.out.println("A fila está vazia.");
+            return;
+        }
+
+        System.out.println("----------Mostrar documentos na fila de impressão----------");
+
+        int contador = 1;
+        for (Impressao documento : filaImpressao) {
+            System.out.println(contador + " - Documento: " + documento.getArquivo());
+            contador++;
         }
     }
 
