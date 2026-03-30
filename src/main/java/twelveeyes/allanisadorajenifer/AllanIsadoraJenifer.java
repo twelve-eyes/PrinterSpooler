@@ -1,4 +1,3 @@
-
 /* 
 Nomes: 
 Allan Carneiro da Cunha Silveira
@@ -7,9 +6,9 @@ Jenifer Beatriz Nunes Ribeiro
 */
 package twelveeyes.allanisadorajenifer;
 
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-import java.util.LinkedList;
 
 class Impressao {
     private String arquivo;
@@ -51,6 +50,7 @@ class Impressao {
 public class AllanIsadoraJenifer {
 
     static Scanner scanner = new Scanner(System.in);
+    static Impressao documentoAtual = null;
 
     public static void main(String[] args) {
         Queue<Impressao> filaImpressao = new LinkedList<>();
@@ -62,6 +62,8 @@ public class AllanIsadoraJenifer {
             switch (opcao) {
                 case 1:
                     incluirImpressao(opcao, filaImpressao);
+                    break;
+                case 2: iniciarImpressao (filaImpressao);
                     break;
                 case 4:
                     mostrarFila(opcao, filaImpressao);
@@ -107,6 +109,17 @@ public class AllanIsadoraJenifer {
         filaImpressao.add(documento);
         System.out.println("Documento incluindo na fila de impressão!");
     }
+    
+    public static void iniciarImpressao(Queue<Impressao> filaImpressao) {
+    if (documentoAtual != null) {
+        System.out.println("Já existe um documento sendo impresso: " + documentoAtual.getArquivo());
+    } else if (filaImpressao.isEmpty()) {
+        System.out.println("Fila vazia. Nenhum documento para imprimir.");
+    } else {
+        documentoAtual = filaImpressao.peek(); // pega o primeiro, mas não remove
+        System.out.println("Iniciando impressão do documento: " + documentoAtual.getArquivo());
+    }
+}
 
     public static void mostrarFila(int posicao, Queue<Impressao> filaImpressao) {
         System.out.println("----------Mostrar documentos na fila de impressão----------");
