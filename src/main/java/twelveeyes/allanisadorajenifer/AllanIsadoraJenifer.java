@@ -13,17 +13,11 @@ import java.util.LinkedList;
 
 class Impressao {
     private String arquivo;
-    private int codigo;
-    private String tipoArq;
-
-    public Impressao(String arquivo, int codigo, String tipoArq) {
-        this.arquivo = arquivo;
-        this.codigo = codigo;
-        this.tipoArq = tipoArq;
-    }
+    private String situacao;
 
     public Impressao(String arquivo) {
         this.arquivo = arquivo;
+        this.situacao = "Pendente";
     }
 
     // Métodos para acessar as variáveis
@@ -35,20 +29,12 @@ class Impressao {
         this.arquivo = arquivo;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public String getSituacao() {
+        return situacao;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getTipoAr() {
-        return tipoArq;
-    }
-
-    public void setTipoArq(String tipoArq) {
-        this.tipoArq = tipoArq;
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
 }
 
@@ -102,11 +88,7 @@ public class AllanIsadoraJenifer {
         System.out.println("--------Incluindo documentos na fila de impressão---------");
         System.out.print("Nome do documento: ");
         String arquivo = scanner.nextLine();
-        // int codigo = lerInteiro("Código do documento: ");
-        // System.out.print("Tipo do arquivo: ");
-        // String tipoArq = scanner.nextLine();
 
-        // Impressao documento = new Impressao(arquivo, codigo, tipoArq);
         Impressao documento = new Impressao(arquivo);
 
         filaImpressao.add(documento);
@@ -114,9 +96,17 @@ public class AllanIsadoraJenifer {
     }
 
     public static void mostrarFila() {
-        System.out.println("----------Mostrar documentos na fila de impressão----------");
+
         if (filaImpressao.isEmpty()) {
             System.out.println("A fila está vazia.");
+            return;
+        }
+
+        System.out.println("----------Mostrar documentos na fila de impressão----------");
+
+        int contador = 1;
+        for (Impressao documento : filaImpressao) {
+            System.out.println(contador++ + " - Documento: " + documento.getArquivo());
         }
     }
 
