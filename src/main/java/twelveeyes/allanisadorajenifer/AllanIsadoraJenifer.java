@@ -153,7 +153,7 @@ public class AllanIsadoraJenifer {
 
     public static void mostrarQuantidade() {
         System.out.println("-------------Quantidade de Impressoes-------------");
-        System.out.println("Quantidade de documentos impressos: " + quantidadeImpressoes);
+        System.out.println("Quantidade de documentos impressos: " + totalImpressos);
     }
 
     public static int lerInteiro(String mensagem) {
