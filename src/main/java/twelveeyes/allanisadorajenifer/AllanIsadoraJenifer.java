@@ -1,4 +1,3 @@
-
 /* 
 Nomes: 
 Allan Carneiro da Cunha Silveira
@@ -7,9 +6,9 @@ Jenifer Beatriz Nunes Ribeiro
 */
 package twelveeyes.allanisadorajenifer;
 
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-import java.util.LinkedList;
 
 class Impressao {
     private String arquivo;
@@ -17,7 +16,7 @@ class Impressao {
 
     public Impressao(String arquivo) {
         this.arquivo = arquivo;
-        this.situacao = "Pendente";
+        this.situacao = "Pendente"; // Imprimindo
     }
 
     // Métodos para acessar as variáveis
@@ -42,8 +41,7 @@ public class AllanIsadoraJenifer {
 
     static Scanner scanner = new Scanner(System.in);
     static Queue<Impressao> filaImpressao = new LinkedList<>();
-    static int quantidadeImpressoes = 0;
-    static boolean finalizar = true;
+    static int totalImpressos = 0;
 
     public static void main(String[] args) {
         // menu
@@ -107,30 +105,34 @@ public class AllanIsadoraJenifer {
 
     public static void iniciarImpressao() {
         if (filaImpressao.isEmpty()) {
-            System.out.println("A fila está vazia.");
+            System.out.println("Fila vazia. Nenhum documento para imprimir.");
             return;
         }
-        if(finalizar == false){
-            System.out.println("Impressão pendente");
-        }
-        if(finalizar == true){
-            System.out.println("----------Iniciando impressao do primeiro documento-----------");
-            System.out.println("Primeiro documento da fila a ser impresso: " + filaImpressao.peek().getArquivo());
-            finalizar = false;
-        }
+        Impressao documentoAtual = filaImpressao.peek(); // Pega o primeiro documento da fila, mas não remove
 
-}
+        if (documentoAtual.getSituacao() == "Imprimindo") {
+            System.out.println("O documento já está sendo impresso: " + documentoAtual.getArquivo());
+        } else if (documentoAtual.getSituacao() == "Pendente") {
+            System.out.println("Iniciando impressão do documento: " + documentoAtual.getArquivo());
+            documentoAtual.setSituacao("Imprimindo");
+        }
+    }
 
     public static void finalizarImpressao() {
         if (filaImpressao.isEmpty()) {
-            System.out.println("A fila está vazia.");
+            System.out.println("Fila vazia. Nenhum documento para finalizar.");
             return;
         }
-        //poll retorna e processa o primeiro da fila
-        System.out.println("Finalizando impressão do documento: " + filaImpressao.poll().getArquivo());
-        System.out.println("Impressão finalizada com sucesso!");
-        quantidadeImpressoes++;
-        finalizar = true;
+
+        Impressao documentoAtual = filaImpressao.peek(); // Pega o primeiro documento da fila, mas não remove
+
+        if (documentoAtual.getSituacao() == "Pendente") {
+            System.out.println("Nenhum documento está sendo impresso. Inicie a impressão primeiro.");
+        } else if (documentoAtual.getSituacao() == "Imprimindo") {
+            System.out.println("Finalizando impressão do documento: " + documentoAtual.getArquivo());
+            filaImpressao.remove(); // Remove o documento da fila após finalizar
+            totalImpressos++;
+        }
     }
 
     public static void mostrarFila() {
@@ -144,7 +146,8 @@ public class AllanIsadoraJenifer {
 
         int contador = 1;
         for (Impressao documento : filaImpressao) {
-            System.out.println(contador++ + " - Documento: " + documento.getArquivo());
+            System.out.println(
+                    contador++ + " - Documento: " + documento.getArquivo() + " | Situação: " + documento.getSituacao());
         }
     }
 
