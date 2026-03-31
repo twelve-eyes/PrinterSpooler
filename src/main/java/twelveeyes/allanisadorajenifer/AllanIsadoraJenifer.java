@@ -16,7 +16,7 @@ class Impressao {
 
     public Impressao(String arquivo) {
         this.arquivo = arquivo;
-        this.situacao = "Pendente"; // Imprimindo, Finalizado, Cancelado
+        this.situacao = "Pendente"; // Imprimindo
     }
 
     // Métodos para acessar as variáveis
@@ -41,6 +41,7 @@ public class AllanIsadoraJenifer {
 
     static Scanner scanner = new Scanner(System.in);
     static Queue<Impressao> filaImpressao = new LinkedList<>();
+    static int totalImpressos = 0;
 
     public static void main(String[] args) {
         // menu
@@ -54,6 +55,9 @@ public class AllanIsadoraJenifer {
                     break;
                 case 2:
                     iniciarImpressao();
+                    break;
+                case 3:
+                    finalizarImpressao();
                     break;
                 case 4:
                     mostrarFila();
@@ -110,11 +114,23 @@ public class AllanIsadoraJenifer {
             System.out.println("Iniciando impressão do documento: " + documentoAtual.getArquivo());
             documentoAtual.setSituacao("Imprimindo");
         }
-        // else {
-        // documentoAtual = filaImpressao.peek(); // pega o primeiro, mas não remove
-        // System.out.println("Iniciando impressão do documento: " +
-        // documentoAtual.getArquivo());
-        // }
+    }
+
+    public static void finalizarImpressao() {
+        if (filaImpressao.isEmpty()) {
+            System.out.println("Fila vazia. Nenhum documento para finalizar.");
+            return;
+        }
+
+        Impressao documentoAtual = filaImpressao.peek(); // Pega o primeiro documento da fila, mas não remove
+
+        if (documentoAtual.getSituacao() == "Pendente") {
+            System.out.println("Nenhum documento está sendo impresso. Inicie a impressão primeiro.");
+        } else if (documentoAtual.getSituacao() == "Imprimindo") {
+            System.out.println("Finalizando impressão do documento: " + documentoAtual.getArquivo());
+            filaImpressao.remove(); // Remove o documento da fila após finalizar
+            totalImpressos++;
+        }
     }
 
     public static void mostrarFila() {
@@ -128,7 +144,8 @@ public class AllanIsadoraJenifer {
 
         int contador = 1;
         for (Impressao documento : filaImpressao) {
-            System.out.println(contador++ + " - Documento: " + documento.getArquivo() + " | Situação: " + documento.getSituacao());
+            System.out.println(
+                    contador++ + " - Documento: " + documento.getArquivo() + " | Situação: " + documento.getSituacao());
         }
     }
 
