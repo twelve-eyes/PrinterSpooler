@@ -62,6 +62,9 @@ public class AllanIsadoraJenifer {
                 case 4:
                     mostrarFila();
                     break;
+                case 5:
+                    mostrarQuantidade();
+                    break;
                 case 0:
                     System.out.println("\nBYE. THANK YOU!");
                     break;
@@ -90,7 +93,6 @@ public class AllanIsadoraJenifer {
     }
 
     public static void incluirImpressao() {
-        // Falta colocar uma condicao se já existe o documento na fila!
         System.out.println("--------Incluindo documentos na fila de impressão---------");
         System.out.print("Nome do documento: ");
         String arquivo = scanner.nextLine();
@@ -147,6 +149,11 @@ public class AllanIsadoraJenifer {
             System.out.println(
                     contador++ + " - Documento: " + documento.getArquivo() + " | Situação: " + documento.getSituacao());
         }
+    }
+
+    public static void mostrarQuantidade() {
+        System.out.println("-------------Quantidade de Impressoes-------------");
+        System.out.println("Quantidade de documentos impressos: " + totalImpressos);
     }
 
     public static int lerInteiro(String mensagem) {
