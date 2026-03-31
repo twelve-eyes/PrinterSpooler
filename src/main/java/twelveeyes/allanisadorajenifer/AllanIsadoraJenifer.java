@@ -42,6 +42,8 @@ public class AllanIsadoraJenifer {
 
     static Scanner scanner = new Scanner(System.in);
     static Queue<Impressao> filaImpressao = new LinkedList<>();
+    static int quantidadeImpressoes = 0;
+    static boolean finalizar = true;
 
     public static void main(String[] args) {
         // menu
@@ -53,8 +55,17 @@ public class AllanIsadoraJenifer {
                 case 1:
                     incluirImpressao();
                     break;
+                case 2:
+                    iniciarImpressao();
+                    break;
+                case 3:
+                    finalizarImpressao();
+                    break;
                 case 4:
                     mostrarFila();
+                    break;
+                case 5:
+                    mostrarQuantidade();
                     break;
                 case 0:
                     System.out.println("\nBYE. THANK YOU!");
@@ -84,7 +95,6 @@ public class AllanIsadoraJenifer {
     }
 
     public static void incluirImpressao() {
-        // Falta colocar uma condicao se já existe o documento na fila!
         System.out.println("--------Incluindo documentos na fila de impressão---------");
         System.out.print("Nome do documento: ");
         String arquivo = scanner.nextLine();
@@ -93,6 +103,34 @@ public class AllanIsadoraJenifer {
 
         filaImpressao.add(documento);
         System.out.println("Documento incluindo na fila de impressão!");
+    }
+
+    public static void iniciarImpressao() {
+        if (filaImpressao.isEmpty()) {
+            System.out.println("A fila está vazia.");
+            return;
+        }
+        if(finalizar == false){
+            System.out.println("Impressão pendente");
+        }
+        if(finalizar == true){
+            System.out.println("----------Iniciando impressao do primeiro documento-----------");
+            System.out.println("Primeiro documento da fila a ser impresso: " + filaImpressao.peek().getArquivo());
+            finalizar = false;
+        }
+
+}
+
+    public static void finalizarImpressao() {
+        if (filaImpressao.isEmpty()) {
+            System.out.println("A fila está vazia.");
+            return;
+        }
+        //poll retorna e processa o primeiro da fila
+        System.out.println("Finalizando impressão do documento: " + filaImpressao.poll().getArquivo());
+        System.out.println("Impressão finalizada com sucesso!");
+        quantidadeImpressoes++;
+        finalizar = true;
     }
 
     public static void mostrarFila() {
@@ -108,6 +146,11 @@ public class AllanIsadoraJenifer {
         for (Impressao documento : filaImpressao) {
             System.out.println(contador++ + " - Documento: " + documento.getArquivo());
         }
+    }
+
+    public static void mostrarQuantidade() {
+        System.out.println("-------------Quantidade de Impressoes-------------");
+        System.out.println("Quantidade de documentos impressos: " + quantidadeImpressoes);
     }
 
     public static int lerInteiro(String mensagem) {
