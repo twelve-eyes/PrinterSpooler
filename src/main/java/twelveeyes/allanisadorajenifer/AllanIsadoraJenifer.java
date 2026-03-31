@@ -128,7 +128,7 @@ public class AllanIsadoraJenifer {
 
         int contador = 1;
         for (Impressao documento : filaImpressao) {
-            System.out.println(contador++ + " - Documento: " + documento.getArquivo());
+            System.out.println(contador++ + " - Documento: " + documento.getArquivo() + " | Situação: " + documento.getSituacao());
         }
     }
 
