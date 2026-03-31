@@ -16,7 +16,7 @@ class Impressao {
 
     public Impressao(String arquivo) {
         this.arquivo = arquivo;
-        this.situacao = "Pendente";
+        this.situacao = "Pendente"; // Imprimindo, Finalizado, Cancelado
     }
 
     // Métodos para acessar as variáveis
@@ -52,7 +52,8 @@ public class AllanIsadoraJenifer {
                 case 1:
                     incluirImpressao();
                     break;
-                case 2: iniciarImpressao (filaImpressao);
+                case 2:
+                    iniciarImpressao();
                     break;
                 case 4:
                     mostrarFila();
@@ -95,17 +96,26 @@ public class AllanIsadoraJenifer {
         filaImpressao.add(documento);
         System.out.println("Documento incluindo na fila de impressão!");
     }
-    
-    public static void iniciarImpressao(Queue<Impressao> filaImpressao) {
-    if (documentoAtual != null) {
-        System.out.println("Já existe um documento sendo impresso: " + documentoAtual.getArquivo());
-    } else if (filaImpressao.isEmpty()) {
-        System.out.println("Fila vazia. Nenhum documento para imprimir.");
-    } else {
-        documentoAtual = filaImpressao.peek(); // pega o primeiro, mas não remove
-        System.out.println("Iniciando impressão do documento: " + documentoAtual.getArquivo());
+
+    public static void iniciarImpressao() {
+        if (filaImpressao.isEmpty()) {
+            System.out.println("Fila vazia. Nenhum documento para imprimir.");
+            return;
+        }
+        Impressao documentoAtual = filaImpressao.peek(); // Pega o primeiro documento da fila, mas não remove
+
+        if (documentoAtual.getSituacao() == "Imprimindo") {
+            System.out.println("O documento já está sendo impresso: " + documentoAtual.getArquivo());
+        } else if (documentoAtual.getSituacao() == "Pendente") {
+            System.out.println("Iniciando impressão do documento: " + documentoAtual.getArquivo());
+            documentoAtual.setSituacao("Imprimindo");
+        }
+        // else {
+        // documentoAtual = filaImpressao.peek(); // pega o primeiro, mas não remove
+        // System.out.println("Iniciando impressão do documento: " +
+        // documentoAtual.getArquivo());
+        // }
     }
-}
 
     public static void mostrarFila() {
 
