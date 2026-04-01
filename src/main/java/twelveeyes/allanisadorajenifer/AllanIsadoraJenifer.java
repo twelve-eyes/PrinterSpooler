@@ -49,6 +49,7 @@ public class AllanIsadoraJenifer {
         do {
             exibirMenu();
             opcao = lerInteiro("Escolha a opcao: ");
+            limparTela();
             switch (opcao) {
                 case 1:
                     incluirImpressao();
@@ -170,5 +171,10 @@ public class AllanIsadoraJenifer {
                 System.out.println("*** ATENCAO: Digite um numero inteiro valido");
             }
         }
+    }
+
+    public static void limparTela() { // Limpar tela, kaue ensinou :)
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
