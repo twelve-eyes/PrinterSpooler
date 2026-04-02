@@ -3,7 +3,7 @@ Nomes:
 Allan Carneiro da Cunha Silveira
 Isadora Voss Brugnera
 Jenifer Beatriz Nunes Ribeiro
- */
+*/
 package twelveeyes.allanisadorajenifer;
 
 import java.util.LinkedList;
@@ -11,7 +11,6 @@ import java.util.Queue;
 import java.util.Scanner;
 
 class Impressao {
-
     private String arquivo;
     private String situacao;
 
