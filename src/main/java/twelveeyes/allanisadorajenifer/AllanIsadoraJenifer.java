@@ -66,6 +66,8 @@ public class AllanIsadoraJenifer {
                 case 5:
                     mostrarQuantidade();
                     break;
+                case 6: cancelarProximo();
+                    break;
                 case 7:
                     mostrarDocumentoAtual();
                     break;
@@ -159,6 +161,17 @@ public class AllanIsadoraJenifer {
         System.out.println("-------------Quantidade de Impressoes-------------");
         System.out.println("Quantidade de documentos impressos: " + totalImpressos);
     }
+
+    
+    public static void cancelarProximo() {
+    if (filaImpressao.isEmpty()) {
+        System.out.println("Não há documentos na fila para cancelar.");
+    } else {
+        Impressao documentoRemovido = filaImpressao.remove();
+        System.out.println("Documento " + documentoRemovido.getArquivo() + " removido com sucesso!");
+    }
+}
+
 
     public static void mostrarDocumentoAtual() {
         Impressao documento = filaImpressao.peek(); // Pega a primeira impressao da fila.
