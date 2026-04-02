@@ -3,7 +3,7 @@ Nomes:
 Allan Carneiro da Cunha Silveira
 Isadora Voss Brugnera
 Jenifer Beatriz Nunes Ribeiro
-*/
+ */
 package twelveeyes.allanisadorajenifer;
 
 import java.util.LinkedList;
@@ -11,6 +11,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 class Impressao {
+
     private String arquivo;
     private String situacao;
 
@@ -65,6 +66,9 @@ public class AllanIsadoraJenifer {
                     break;
                 case 5:
                     mostrarQuantidade();
+                    break;
+                case 7:
+                    mostrarDocumentoAtual();
                     break;
                 case 0:
                     System.out.println("\nBYE. THANK YOU!");
@@ -155,6 +159,18 @@ public class AllanIsadoraJenifer {
     public static void mostrarQuantidade() {
         System.out.println("-------------Quantidade de Impressoes-------------");
         System.out.println("Quantidade de documentos impressos: " + totalImpressos);
+    }
+
+    public static void mostrarDocumentoAtual() {
+        Impressao documento = filaImpressao.peek(); // Pega a primeira impressao da fila.
+
+        if (documento == null) {
+            System.out.println("Nenhum documento sendo impresso.");
+        } else if (documento.getSituacao() == "Imprimindo") { // Verifca qual documento está sendo impresso.
+            System.out.println("Documento atual que está sendo impresso: " + documento.getArquivo());
+        } else {
+            System.out.println("Nenhum documento sendo impresso.");
+        }
     }
 
     public static int lerInteiro(String mensagem) {
