@@ -66,6 +66,9 @@ public class AllanIsadoraJenifer {
                 case 5:
                     mostrarQuantidade();
                     break;
+                case 6:
+                    cancelarProximo();
+                    break;
                 case 0:
                     System.out.println("\nBYE. THANK YOU!");
                     break;
@@ -155,6 +158,14 @@ public class AllanIsadoraJenifer {
     public static void mostrarQuantidade() {
         System.out.println("-------------Quantidade de Impressoes-------------");
         System.out.println("Quantidade de documentos impressos: " + totalImpressos);
+    }
+
+    public static void cancelarProximo(){
+        if(filaImpressao.size()>=2){
+            Impressao delTemp = filaImpressao.poll();
+        filaImpressao.poll();
+        filaImpressao.add(delTemp);
+        }
     }
 
     public static int lerInteiro(String mensagem) {
