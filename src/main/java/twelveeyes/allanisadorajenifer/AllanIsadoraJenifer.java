@@ -44,7 +44,6 @@ public class AllanIsadoraJenifer {
     static int totalImpressos = 0;
 
     public static void main(String[] args) {
-        // menu
         int opcao = 0;
         do {
             exibirMenu();
@@ -66,13 +65,14 @@ public class AllanIsadoraJenifer {
                 case 5:
                     mostrarQuantidade();
                     break;
-                case 6: cancelarProximo();
+                case 6:
+                    cancelarProximo();
                     break;
                 case 7:
                     mostrarDocumentoAtual();
                     break;
                 case 0:
-                    System.out.println("\nBYE. THANK YOU!");
+                    System.out.println("\nSpooler encerrado!");
                     break;
                 default:
                     System.out.println("\nOpcao invalida.");
@@ -81,7 +81,6 @@ public class AllanIsadoraJenifer {
     }
 
     public static void exibirMenu() {
-
         System.out.println("\n--------------------------------------------");
         System.out.println("SISTEMA DE IMPRESSÃO");
         System.out.println("--------------------------------------------");
@@ -142,7 +141,6 @@ public class AllanIsadoraJenifer {
     }
 
     public static void mostrarFila() {
-
         if (filaImpressao.isEmpty()) {
             System.out.println("A fila está vazia.");
             return;
@@ -162,16 +160,14 @@ public class AllanIsadoraJenifer {
         System.out.println("Quantidade de documentos impressos: " + totalImpressos);
     }
 
-    
     public static void cancelarProximo() {
-    if (filaImpressao.isEmpty()) {
-        System.out.println("Não há documentos na fila para cancelar.");
-    } else {
-        Impressao documentoRemovido = filaImpressao.remove();
-        System.out.println("Documento " + documentoRemovido.getArquivo() + " removido com sucesso!");
+        if (filaImpressao.isEmpty()) {
+            System.out.println("Não há documentos na fila para cancelar.");
+        } else {
+            Impressao documentoRemovido = filaImpressao.remove();
+            System.out.println("Documento " + documentoRemovido.getArquivo() + " removido com sucesso!");
+        }
     }
-}
-
 
     public static void mostrarDocumentoAtual() {
         Impressao documento = filaImpressao.peek(); // Pega a primeira impressao da fila.
@@ -186,16 +182,11 @@ public class AllanIsadoraJenifer {
     }
 
     public static int lerInteiro(String mensagem) {
-
         while (true) {
-
             try {
-
                 System.out.print(mensagem);
                 return Integer.parseInt(scanner.nextLine());
-
             } catch (Exception e) {
-
                 System.out.println("*** ATENCAO: Digite um numero inteiro valido");
             }
         }
